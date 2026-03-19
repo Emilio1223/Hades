@@ -1,2 +1,2 @@
 # Hades
-Desarrollo de una pagina web con Dknago
+Desarrollo de una pagina web con Django
