@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        Mi primera pagina web con Django
+        <!-- {% if categrias %}
+            Si hay datos
+        {% else %}
+            No hay datos
+        {% endif %} -->
+    </h1>
+
+
+{% block blockname %}
+<a href="{% url 'erp:vista2' %}">Ir a vista 2</a>
+    <ul>
+        {% for categoria in categorias %}
+        <li>{{ categoria.name }} / {{ categoria.id }}</li>
+        {% endfor %}
+    </ul>
+{% endblock blockname %}
+    
+<p>{{ name }} {{ lastname }} is {{ age }} years old.</p>
+</body>
+
+</html>

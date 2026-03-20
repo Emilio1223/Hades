@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block blockname %}
+<a href="{% url 'erp:vista1' %}">Ir a vista 1</a>
+
+
+    <ul>
+        {% for producto in productos %}
+        <li>{{ producto.name }} / {{ producto.id }}</li>
+        {% endfor %}
+    </ul>
+{% endblock blockname %}
