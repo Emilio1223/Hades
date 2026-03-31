@@ -1,8 +1,8 @@
-from pathlib import Path
-import sys
-sys.path.append(str(Path(__file__).parent.parent.parent))
-from config.asgi import *
-from core.erp.models import Client
+# from pathlib import Path
+# import sys
+# sys.path.append(str(Path(__file__).parent.parent.parent))
+# from config.asgi import *
+# from core.erp.models import Client
 
 #esto es como hacer un SELECT * FROM TABLA
 #los datos se insertaron directamente desde SQLLite
@@ -33,3 +33,18 @@ from core.erp.models import Client
 # t = Client.objects.filter(first_name__icontains='javier')
 
 # print(t)
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+from config.asgi import *
+from core.erp.models import *
+
+
+data = ['Leche y derivados', 'Carnes, pescados y huevos', 'Patatas, legumbres, frutos secos',
+        'Verduras y Hortalizas', 'Frutas', 'Cereales y derivados, azúcar y dulces',
+        'Grasas, aceite y mantequilla']
+
+for i in data:
+    cat = Category(name=i)
+    cat.save()
+    print('Guardado registro N°{}'.format(cat.id))
