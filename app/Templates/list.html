@@ -1,6 +1,23 @@
-{% extends 'body.html' %} 
+{% extends 'body.html' %} {% block head %}
+<!-- CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap4.min.css"
+/>
 
-{% block content %}
+<!-- jQuery (OBLIGATORIO) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- JS -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap4.min.js"></script>
+{% endblock head %} {% block content %}
 <div class="card card-default">
   <div class="card-header">
     <h3 class="card-title">
@@ -10,26 +27,33 @@
   </div>
   <!-- /.card-header -->
   <div class="card-body">
-    <table class="table">
-        <thead>
-        
-        {% block columns %}
-            
-        {% endblock columns %}
-        </thead>
-        
-        <tbody>
-        {% block rows %}
-            
-        {% endblock rows %}
-        </tbody>
+    <table
+      class="table"
+      id="data"
+    >
+      <thead>
+        {% block columns %} {% endblock columns %}
+      </thead>
+
+      <tbody>
+        {% block rows %} {% endblock rows %}
+      </tbody>
     </table>
   </div>
   <div class="card-footer">
     <button class="btn btn-primary btn-flat">
       <i class="fas fa-plus"></i>
-      Nuevo registro 
+      Nuevo registro
     </button>
   </div>
 </div>
+{% endblock %} {% block javascript %}
+<script type="application/javascript">
+  $(document).ready(function () {
+    $('#data').DataTable({
+      responsive: true,
+      autoWidth: false,
+    });
+  });
+</script>
 {% endblock %}
