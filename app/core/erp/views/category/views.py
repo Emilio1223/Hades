@@ -50,7 +50,14 @@ class CategoryCreateView(CreateView):
     template_name = 'category/create.html'
     success_url = reverse_lazy('erp:category_list')
     
-    # def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
+        data = {}
+        try:           
+            data = Category.objects.get(pk=request.POST['id']).toJSON()
+        except Exception as e:
+            data['error'] = str(e)
+        return JsonResponse(data)
+    
     #     form = CategoryForm(request.POST)
     #     if form.is_valid():
     #         form.save()

@@ -59,5 +59,24 @@
             confirmButtonText: 'Cool'
         })
         {% endif %}
+
+        $('form').on('submit', function(e){
+            e.preventDefault();
+            var = parametros = $(this).serializeArray();
+            
+            $.ajax({
+                url: '{% url "erp:category_create" %}',
+                type: 'POST',
+                data: {id: 1},
+                dataType: 'json'
+            }).done(function (data) {
+                console.log(data);
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                alert(textStatus+ ': '+errorThrown);
+            }).always(function (data) {
+                console.log('completado');
+        });
+        });
+
     </script>
 {% endblock content %}  
